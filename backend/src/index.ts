@@ -16,7 +16,7 @@ app.use(cors({
 app.post("/signin", (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
-    // do db validation, fetch id of user from db
+
     const token = jwt.sign({
         id: 1
     }, JWT_SECRET);
@@ -30,7 +30,7 @@ app.get("/user", (req, res) => {
     console.log(token);
     
     const decoded = jwt.verify(token, JWT_SECRET) as JwtPayload;
-    // Get email of the user from the database 
+
     res.send({
         userId: decoded.id
     })
